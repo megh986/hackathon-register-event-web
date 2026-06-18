@@ -149,12 +149,12 @@ button {
   position: relative;
   overflow: hidden;
   width: 100%;
-  min-height: 5.4rem;
-  padding: 0.7rem 0;
+  min-height: 5.1rem;
+  padding: 0.65rem 0;
   border-radius: 999px;
   background:
-    radial-gradient(circle at 20% 0%, rgba(76, 224, 255, 0.18), transparent 28%),
-    radial-gradient(circle at 70% 100%, rgba(255, 83, 184, 0.16), transparent 34%),
+    radial-gradient(circle at 15% 50%, rgba(76, 224, 255, 0.2), transparent 24%),
+    radial-gradient(circle at 78% 50%, rgba(255, 83, 184, 0.18), transparent 28%),
     linear-gradient(135deg, rgba(14, 10, 31, 0.97), rgba(26, 15, 52, 0.9)),
     rgba(12, 8, 27, 0.88);
   border: 1px solid rgba(155, 131, 255, 0.22);
@@ -163,7 +163,6 @@ button {
     inset 0 -10px 22px rgba(82, 48, 167, 0.18),
     0 16px 36px rgba(5, 4, 16, 0.34),
     0 0 32px rgba(123, 86, 255, 0.18);
-  perspective: 1200px;
 }
 
 .ticker-window::before,
@@ -187,25 +186,34 @@ button {
   background: linear-gradient(270deg, rgba(11, 7, 24, 0.96), rgba(11, 7, 24, 0));
 }
 
-.ticker-lane {
+.ticker-orb {
   position: absolute;
-  left: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.ticker-lane--front {
-  top: 0.72rem;
-  z-index: 2;
-}
-
-.ticker-lane--back {
-  top: 0.35rem;
+  top: 50%;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 999px;
+  filter: blur(0.4px);
+  transform: translateY(-50%);
   z-index: 1;
-  opacity: 0.3;
-  filter: blur(1.1px);
+  pointer-events: none;
+}
+
+.ticker-orb--left {
+  left: 2.25rem;
+  background: radial-gradient(circle, rgba(86, 216, 255, 0.9), rgba(86, 216, 255, 0));
+  box-shadow: 0 0 20px rgba(86, 216, 255, 0.55);
+}
+
+.ticker-orb--mid {
+  left: 49%;
+  background: radial-gradient(circle, rgba(255, 94, 201, 0.82), rgba(255, 94, 201, 0));
+  box-shadow: 0 0 22px rgba(255, 94, 201, 0.48);
+}
+
+.ticker-orb--right {
+  right: 2.5rem;
+  background: radial-gradient(circle, rgba(255, 215, 106, 0.88), rgba(255, 215, 106, 0));
+  box-shadow: 0 0 22px rgba(255, 215, 106, 0.5);
 }
 
 .ticker-track {
@@ -213,9 +221,11 @@ button {
   align-items: center;
   width: max-content;
   gap: 1rem;
-  padding-inline: 1rem;
+  padding-inline: 1.1rem;
   transform: translate3d(0, 0, 0);
   will-change: transform;
+  position: relative;
+  z-index: 2;
 }
 
 .ticker-pill {
@@ -224,35 +234,22 @@ button {
   gap: 0.8rem;
   position: relative;
   min-width: max-content;
-  padding: 0.98rem 1.25rem;
-  border-radius: 1.35rem;
+  padding: 0.92rem 1.2rem;
+  border-radius: 1.15rem;
   background:
-    linear-gradient(180deg, rgba(60, 46, 102, 0.96), rgba(29, 21, 52, 0.92)),
+    linear-gradient(180deg, rgba(53, 41, 95, 0.96), rgba(28, 21, 51, 0.94)),
     rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #fbf7ff;
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: 0.96rem;
+  font-weight: 800;
   letter-spacing: 0.015em;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.12),
     inset 0 -8px 14px rgba(12, 7, 28, 0.4),
     0 18px 26px rgba(10, 7, 24, 0.24);
-  transform: rotateX(12deg) rotateY(-7deg) translateZ(0);
-  transform-origin: center center;
   text-shadow: 0 0 16px rgba(255, 255, 255, 0.12);
   overflow: hidden;
-}
-
-.ticker-pill--ghost {
-  background:
-    linear-gradient(180deg, rgba(62, 41, 110, 0.44), rgba(28, 19, 50, 0.42)),
-    rgba(255, 255, 255, 0.04);
-  color: rgba(247, 241, 255, 0.66);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 10px 18px rgba(10, 7, 24, 0.16);
-  transform: rotateX(16deg) rotateY(-8deg) scale(0.96);
 }
 
 .ticker-pill__shine {
@@ -266,50 +263,64 @@ button {
   pointer-events: none;
 }
 
+.ticker-icon-wrap {
+  display: inline-flex;
+}
+
 .ticker-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 2rem;
-  height: 2rem;
-  padding-inline: 0.55rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, rgba(112, 68, 255, 0.9), rgba(240, 76, 183, 0.72));
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 0.8rem;
+  background: linear-gradient(135deg, rgba(112, 68, 255, 0.94), rgba(240, 76, 183, 0.78));
   color: #fff;
-  font-size: 0.78rem;
-  font-weight: 800;
   box-shadow:
     0 8px 18px rgba(121, 69, 255, 0.28),
     inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.ticker-icon svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ticker-label {
   font-family: "Sora", sans-serif;
 }
 
-.ticker-pill--tone-0 .ticker-icon {
+.ticker-pill--cyan .ticker-icon {
   background: linear-gradient(135deg, #8b5cff, #56d8ff);
 }
 
-.ticker-pill--tone-1 .ticker-icon {
+.ticker-pill--violet .ticker-icon {
   background: linear-gradient(135deg, #ff5ec9, #8b5cff);
 }
 
-.ticker-pill--tone-2 .ticker-icon {
+.ticker-pill--pink .ticker-icon {
   background: linear-gradient(135deg, #ffb84d, #ff5ec9);
 }
 
-.ticker-pill--tone-3 .ticker-icon {
+.ticker-pill--gold .ticker-icon {
   background: linear-gradient(135deg, #56d8ff, #6f86ff);
 }
 
-.ticker-pill--tone-4 .ticker-icon {
+.ticker-pill--blue .ticker-icon {
   background: linear-gradient(135deg, #9dff7a, #56d8ff);
 }
 
-.ticker-pill--tone-5 .ticker-icon {
+.ticker-pill--mint .ticker-icon {
   background: linear-gradient(135deg, #ffd76a, #8b5cff);
 }
 
-.ticker-pill--tone-0,
-.ticker-pill--tone-3 {
+.ticker-pill--cyan,
+.ticker-pill--gold {
   border-color: rgba(86, 216, 255, 0.16);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.12),
@@ -318,8 +329,8 @@ button {
     0 0 24px rgba(86, 216, 255, 0.08);
 }
 
-.ticker-pill--tone-1,
-.ticker-pill--tone-2 {
+.ticker-pill--violet,
+.ticker-pill--pink {
   border-color: rgba(255, 94, 201, 0.15);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.12),
@@ -328,8 +339,8 @@ button {
     0 0 24px rgba(255, 94, 201, 0.08);
 }
 
-.ticker-pill--tone-4,
-.ticker-pill--tone-5 {
+.ticker-pill--blue,
+.ticker-pill--mint {
   border-color: rgba(255, 215, 106, 0.14);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.12),
@@ -504,14 +515,6 @@ button {
     min-height: 4.8rem;
   }
 
-  .ticker-lane--front {
-    top: 0.58rem;
-  }
-
-  .ticker-lane--back {
-    top: 0.24rem;
-  }
-
   .video-hero__copy {
     margin-top: 2.5rem;
     padding-top: 1.5rem;
@@ -539,11 +542,6 @@ button {
   .ticker-pill {
     padding: 0.82rem 1rem;
     font-size: 0.86rem;
-  }
-
-  .ticker-pill,
-  .ticker-pill--ghost {
-    transform: none;
   }
 
   .video-hero__copy {
